@@ -1,0 +1,25 @@
+{
+  "name": "team64j/laravel-manager-components",
+  "description": "Laravel Manager Components",
+  "homepage": "https://github.com/team64j/laravel-manager-components",
+  "keywords": [
+    "laravel",
+    "manager",
+    "components"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Serg Kochin"
+    }
+  ],
+  "require": {
+    "php": ">=8.1"
+  },
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "Team64j\\LaravelManagerApi\\": "src"
+    }
+  }
+}

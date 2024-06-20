@@ -72,6 +72,16 @@ class Section extends Component
     }
 
     /**
+     * @return $this
+     */
+    public function isExpanded(): static
+    {
+        $this->attributes['attrs']['expanded'] = true;
+
+        return $this;
+    }
+
+    /**
      * @param string|array|Component|null $slot
      *
      * @return $this

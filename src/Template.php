@@ -2,29 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Team64j\LaravelManagerApi\Components;
+namespace Team64j\LaravelManagerComponents;
 
 use Illuminate\Support\Arr;
 
-class Section extends Component
+class Template extends Component
 {
     /**
-     * @param string|null $icon
-     * @param string|null $label
      * @param string|null $class
      * @param string|array|Component|null $slot
      */
     public function __construct(
-        string $icon = null,
-        string $label = null,
         string $class = null,
         string|array|Component $slot = null
     ) {
         $attributes = [
-            'component' => 'AppSection',
+            'component' => 'AppTemplate',
             'attrs' => [
-                'icon' => $icon,
-                'label' => $label,
                 'class' => $class,
             ],
             'slots' => [
@@ -33,30 +27,6 @@ class Section extends Component
         ];
 
         parent::__construct($attributes);
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function setIcon(string $value): static
-    {
-        $this->attributes['attrs']['icon'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function setLabel(string $value): static
-    {
-        $this->attributes['attrs']['label'] = $value;
-
-        return $this;
     }
 
     /**
@@ -78,7 +48,7 @@ class Section extends Component
      */
     public function putSlot(string|array|Component $slot = null): static
     {
-        $this->attributes['slots']['default'][] = Arr::wrap($slot);
+        $this->attributes['slots']['default'][] = $slot;
 
         return $this;
     }
@@ -90,7 +60,7 @@ class Section extends Component
      */
     public function setSlot(string|array|Component $slot = null): static
     {
-        $this->attributes['slots']['default'] = (array) $slot;
+        $this->attributes['slots']['default'] = $slot;
 
         return $this;
     }

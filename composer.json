@@ -19,7 +19,7 @@
   "require-dev": {},
   "autoload": {
     "psr-4": {
-      "Team64j\\LaravelManagerApi\\": "src"
+      "Team64j\\LaravelManagerComponents\\": "src"
     }
   }
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Team64j\LaravelManagerApi\Components;
+namespace Team64j\LaravelManagerComponents;
 
-class Radio extends Field
+class File extends Field
 {
     /**
      * @param string|null $model
@@ -19,7 +19,7 @@ class Radio extends Field
         string $class = null
     ) {
         $attributes = [
-            'component' => 'AppRadio',
+            'component' => 'AppFile',
             'attrs' => [
                 'label' => $label,
                 'help' => $help,

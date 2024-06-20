@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Team64j\LaravelManagerApi\Components;
+namespace Team64j\LaravelManagerComponents;
 
 class Tab extends Component
 {

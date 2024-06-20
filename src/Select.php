@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Team64j\LaravelManagerApi\Components;
+namespace Team64j\LaravelManagerComponents;
 
-class DateTime extends Field
+class Select extends Field
 {
     /**
      * @param string|null $model
@@ -19,7 +19,7 @@ class DateTime extends Field
         string $class = null
     ) {
         $attributes = [
-            'component' => 'AppDatetime',
+            'component' => 'AppSelect',
             'attrs' => [
                 'label' => $label,
                 'help' => $help,
@@ -29,5 +29,15 @@ class DateTime extends Field
         ];
 
         parent::__construct($attributes);
+    }
+
+    /**
+     * @return $this
+     */
+    public function setMultiple(): static
+    {
+        $this->attributes['attrs']['multiple'] = true;
+
+        return $this;
     }
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Team64j\LaravelManagerApi\Components;
+namespace Team64j\LaravelManagerComponents;
 
-class Media extends Component
+class Radio extends Field
 {
     /**
      * @param string|null $model
@@ -19,7 +19,7 @@ class Media extends Component
         string $class = null
     ) {
         $attributes = [
-            'component' => 'AppMedia',
+            'component' => 'AppRadio',
             'attrs' => [
                 'label' => $label,
                 'help' => $help,
@@ -29,29 +29,5 @@ class Media extends Component
         ];
 
         parent::__construct($attributes);
-    }
-
-    /**
-     * @param array|null $value
-     *
-     * @return $this
-     */
-    public function setData(array $value = null): static
-    {
-        $this->attributes['attrs']['data'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
-    public function setClass(string $value = null): static
-    {
-        $this->attributes['attrs']['class'] = $value;
-
-        return $this;
     }
 }

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Team64j\LaravelManagerApi\Components;
+namespace Team64j\LaravelManagerComponents;
 
-class Number extends Input
+class Email extends Input
 {
     public function __construct()
     {
         parent::__construct(...func_get_args());
 
-        $this->attributes['attrs']['type'] = 'number';
+        $this->attributes['attrs']['type'] = 'email';
     }
 }

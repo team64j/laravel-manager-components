@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Team64j\LaravelManagerApi\Components;
+namespace Team64j\LaravelManagerComponents;
 
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;

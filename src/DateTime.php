@@ -30,4 +30,14 @@ class DateTime extends Field
 
         parent::__construct($attributes);
     }
+
+    /**
+     * @return $this
+     */
+    public function isClear(): static
+    {
+        $this->attributes['attrs']['clear'] = true;
+
+        return $this;
+    }
 }

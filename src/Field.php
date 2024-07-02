@@ -95,6 +95,18 @@ class Field extends Component
      *
      * @return $this
      */
+    public function setKeyValue($value = null): static
+    {
+        $this->attributes['attrs']['keyValue'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param null $value
+     *
+     * @return $this
+     */
     public function setType($value = null): static
     {
         $this->attributes['attrs']['type'] = $value;

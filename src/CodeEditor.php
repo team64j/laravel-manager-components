@@ -88,4 +88,14 @@ class CodeEditor extends Component
 
         return $this;
     }
+
+    /**
+     * @return $this
+     */
+    public function isFullSize(): static
+    {
+        $this->attributes['attrs']['fullSize'] = true;
+
+        return $this;
+    }
 }

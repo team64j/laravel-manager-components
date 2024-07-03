@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManagerComponents;
 
-class Breadcrumbs extends Component
+class Crumbs extends Component
 {
     /**
      * @param array $attributes
@@ -12,7 +12,7 @@ class Breadcrumbs extends Component
     public function __construct(array $attributes = [])
     {
         $attributes = [
-            'component' => 'AppBreadcrumbs',
+            'component' => 'AppCrumbs',
             'attrs' => [
                 'data' => $attributes['data'] ?? [],
             ],

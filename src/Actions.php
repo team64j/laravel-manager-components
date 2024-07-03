@@ -49,7 +49,7 @@ use Illuminate\Support\Str;
  * @method self setSaveClass(string $class)
  * @method self setSaveIcon(string $icon)
  */
-class ActionsButtons extends Component
+class Actions extends Component
 {
     /**
      * @param array $data
@@ -57,7 +57,7 @@ class ActionsButtons extends Component
     public function __construct(array $data = [])
     {
         $attributes = [
-            'component' => 'AppActionsButtons',
+            'component' => 'AppActions',
         ];
 
         foreach ($data as $item) {

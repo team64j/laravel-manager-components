@@ -31,7 +31,7 @@ class Main extends Component
     public function setActions($value): static
     {
         if ($value instanceof Closure) {
-            $value = $value(ActionsButtons::make());
+            $value = $value(Actions::make());
         }
 
         $this->attributes['slots']['actions'] = $value;
@@ -79,7 +79,7 @@ class Main extends Component
     public function setBreadcrumbs($value): static
     {
         if ($value instanceof Closure) {
-            $value = $value(Breadcrumbs::make());
+            $value = $value(Crumbs::make());
         }
 
         $this->attributes['slots']['breadcrumbs'] = $value;

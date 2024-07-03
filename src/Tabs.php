@@ -74,11 +74,11 @@ class Tabs extends Component
     }
 
     /**
-     * @param string|null $value
+     * @param string|bool|null $value
      *
      * @return $this
      */
-    public function setHistory(string $value = null): static
+    public function setHistory(string|bool $value = null): static
     {
         $this->attributes['attrs']['history'] = $value;
 

@@ -76,7 +76,7 @@ class Main extends Component
      *
      * @return $this
      */
-    public function setBreadcrumbs($value): static
+    public function setCrumbs($value): static
     {
         if ($value instanceof Closure) {
             $value = $value(Crumbs::make());

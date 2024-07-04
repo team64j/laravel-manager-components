@@ -168,10 +168,26 @@ class Tabs extends Component
 
             if (!empty($tab['slot'])) {
                 $this->attributes['slots'][$id] = $tab['slot'];
+                unset($tab['slot']);
             }
         }
 
         return $this;
+    }
+
+    protected function clearAttributes(): void
+    {
+        parent::clearAttributes();
+
+        foreach ($this->attributes['attrs']['data'] ?? [] as $key => $value) {
+            if (isset($this->attributes['attrs']['data'][$key]['slot'])) {
+                unset($this->attributes['attrs']['data'][$key]['slot']);
+            }
+
+            if (isset($this->attributes['attrs']['data'][$key]['permissions'])) {
+                unset($this->attributes['attrs']['data'][$key]['permissions']);
+            }
+        }
     }
 
     /**

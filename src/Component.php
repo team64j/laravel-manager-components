@@ -19,6 +19,17 @@ abstract class Component extends Fluent
     }
 
     /**
+     * @param $method
+     * @param $parameters
+     *
+     * @return static
+     */
+    public static function __callStatic($method, $parameters): static
+    {
+        return (new static)->$method(...$parameters);
+    }
+
+    /**
      * @return array
      */
     public function toArray(): array
@@ -27,6 +38,18 @@ abstract class Component extends Fluent
         $this->clearAttributes();
 
         return parent::toArray();
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function toSlot(string $value): static
+    {
+        $this->attributes['slot'] = $value;
+
+        return $this;
     }
 
     /**
@@ -64,17 +87,6 @@ abstract class Component extends Fluent
         if (!$this->hasPermissions($permissions)) {
             $this->attributes = [];
         }
-    }
-
-    /**
-     * @param $method
-     * @param $parameters
-     *
-     * @return static
-     */
-    public static function __callStatic($method, $parameters): static
-    {
-        return (new static)->$method(...$parameters);
     }
 
     /**

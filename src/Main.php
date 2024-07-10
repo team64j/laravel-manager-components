@@ -82,7 +82,7 @@ class Main extends Component
             $value = $value(Crumbs::make());
         }
 
-        $this->attributes['slots']['breadcrumbs'] = $value;
+        $this->attributes['slots']['crumbs'] = $value;
 
         return $this;
     }

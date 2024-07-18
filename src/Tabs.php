@@ -22,6 +22,10 @@ class Tabs extends Component
             'slots' => $data['slots'] ?? null,
         ];
 
+        if (!empty($data['slot'])) {
+            $attributes['slot'] = $data['slot'];
+        }
+
         parent::__construct($attributes);
     }
 

@@ -17,10 +17,26 @@ class Main extends Component
 //                'title' => $attributes['title'] ?? [],
 //                'tabs' => $attributes['tabs'] ?? [],
             ],
-            'slots' => $attributes['slots'] ?? [],
+            'slots' => $attributes,
         ];
 
         parent::__construct($attributes);
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        if (array_is_list($this->attributes['slots'])) {
+            foreach ($this->attributes['slots'] as $k => $slot) {
+                unset($this->attributes['slots'][$k]);
+
+                $this->attributes['slots'][$slot['slot'] ?? 'default'][] = $slot;
+            }
+        }
+
+        return parent::toArray();
     }
 
     /**
@@ -34,9 +50,7 @@ class Main extends Component
             $value = $value(Actions::make());
         }
 
-        $this->attributes['slots']['actions'] = $value;
-
-        return $this;
+        return $this->setSlot('actions', $value);
     }
 
     /**
@@ -50,9 +64,7 @@ class Main extends Component
             $value = $value(Title::make());
         }
 
-        $this->attributes['slots']['title'] = $value;
-
-        return $this;
+        return $this->setSlot('title', $value);
     }
 
     /**
@@ -66,9 +78,7 @@ class Main extends Component
             $value = $value(Tabs::make());
         }
 
-        $this->attributes['slots']['tabs'] = $value;
-
-        return $this;
+        return $this->setSlot('tabs', $value);
     }
 
     /**
@@ -82,7 +92,31 @@ class Main extends Component
             $value = $value(Crumbs::make());
         }
 
-        $this->attributes['slots']['crumbs'] = $value;
+        return $this->setSlot('crumbs', $value);
+    }
+
+    /**
+     * @param string $key
+     * @param array|Component $data
+     *
+     * @return $this
+     */
+    public function setSlot(string $key, array|Component $data = []): static
+    {
+        $this->attributes['slots'][$key] = $data;
+
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @param array|Component $data
+     *
+     * @return $this
+     */
+    public function putSlot(string $key, array|Component $data = []): static
+    {
+        $this->attributes['slots'][$key][] = $data;
 
         return $this;
     }

@@ -74,7 +74,7 @@ class Actions extends Component
      */
     public function toArray(): array
     {
-        $this->attributes['attrs']['data'] = array_values($this->attributes['attrs']['data']);
+        $this->attributes['attrs']['data'] = array_values($this->attributes['attrs']['data'] ?? []);
 
         return parent::toArray();
     }

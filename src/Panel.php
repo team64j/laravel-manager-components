@@ -102,11 +102,11 @@ class Panel extends Component
     }
 
     /**
-     * @param bool|null $value
+     * @param bool|string|null $value
      *
      * @return $this
      */
-    public function setHistory(bool $value = null): static
+    public function setHistory(bool|string $value = null): static
     {
         $this->attributes['attrs']['history'] = $value;
 

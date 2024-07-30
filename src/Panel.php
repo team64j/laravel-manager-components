@@ -27,6 +27,18 @@ class Panel extends Component
     }
 
     /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setView(string $value): static
+    {
+        $this->attributes['attrs']['view'] = $value;
+
+        return $this;
+    }
+
+    /**
      * @return void
      */
     protected function clearAttributes(): void

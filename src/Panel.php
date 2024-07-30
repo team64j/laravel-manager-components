@@ -90,11 +90,11 @@ class Panel extends Component
     }
 
     /**
-     * @param string|null $value
+     * @param string|array|null $value
      *
      * @return $this
      */
-    public function setRoute(string $value = null): static
+    public function setRoute(string|array $value = null): static
     {
         $this->attributes['attrs']['route'] = $value;
 

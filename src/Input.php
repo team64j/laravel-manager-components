@@ -18,16 +18,10 @@ class Input extends Field
         string $help = null,
         string $class = null
     ) {
-        $attributes = [
+        parent::__construct([
             'component' => 'AppInput',
-            'attrs' => [
-                'label' => $label,
-                'help' => $help,
-                'class' => $class,
-            ],
+            'attrs' => get_defined_vars(),
             'model' => $model,
-        ];
-
-        parent::__construct($attributes);
+        ]);
     }
 }

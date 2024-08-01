@@ -99,11 +99,11 @@ abstract class Component extends Fluent
     public function when(mixed $cond, callable $callableIf = null, callable $callableElse = null): static
     {
         if ($cond && $callableIf instanceof Closure) {
-            return $callableIf($this);
+            $callableIf($this);
         }
 
         if ($callableElse instanceof Closure) {
-            return $callableElse($this);
+            $callableElse($this);
         }
 
         return $this;

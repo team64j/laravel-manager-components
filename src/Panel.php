@@ -264,4 +264,16 @@ class Panel extends Component
 
         return $this;
     }
+
+    /**
+     * @param array $value
+     *
+     * @return $this
+     */
+    public function setContextMenu(array $value): static
+    {
+        $this->attributes['attrs']['contextMenu'] = $value;
+
+        return $this;
+    }
 }

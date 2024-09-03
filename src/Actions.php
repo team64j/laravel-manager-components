@@ -70,16 +70,6 @@ class Actions extends Component
     }
 
     /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        $this->attributes['attrs']['data'] = array_values($this->attributes['attrs']['data'] ?? []);
-
-        return parent::toArray();
-    }
-
-    /**
      * @param $method
      * @param $parameters
      *
@@ -144,11 +134,15 @@ class Actions extends Component
             $action = $action['action'];
         }
 
-        if (isset($this->attributes['attrs']['data'][$action])) {
-            return $this;
+        if (!empty($this->attributes['attrs']['data'])) {
+            foreach ($this->attributes['attrs']['data'] as $value) {
+                if (($value['action']['action'] ?? $value['action']) == $action) {
+                    return $this;
+                }
+            }
         }
 
-        $this->attributes['attrs']['data'][$action] = [
+        $this->attributes['attrs']['data'][] = [
             'action' => $params,
         ];
 
@@ -168,18 +162,22 @@ class Actions extends Component
     {
         $this->setAction($action);
 
-        if (!isset($this->attributes['attrs']['data'][$action]['title'])) {
-            $this->attributes['attrs']['data'][$action]['title'] = match ($action) {
-                'cancel' => $lang ?? Lang::get('global.cancel'),
-                'delete' => $lang ?? Lang::get('global.delete'),
-                'clear' => $lang ?? Lang::get('global.clear'),
-                'restore' => $lang ?? Lang::get('global.undelete_resource'),
-                'copy' => $lang ?? Lang::get('global.duplicate'),
-                'view' => $lang ?? Lang::get('global.view'),
-                'new' => $lang ?? Lang::get('global.new_resource'),
-                'save', 'saveAnd' => $lang ?? Lang::get('global.save'),
-                default => $lang ?? Lang::get('global.create_new')
-            };
+        foreach ($this->attributes['attrs']['data'] as &$value) {
+            if (($value['action']['action'] ?? $value['action']) == $action) {
+                $value['title'] = match ($action) {
+                    'cancel' => $lang ?? Lang::get('global.cancel'),
+                    'delete' => $lang ?? Lang::get('global.delete'),
+                    'clear' => $lang ?? Lang::get('global.clear'),
+                    'restore' => $lang ?? Lang::get('global.undelete_resource'),
+                    'copy' => $lang ?? Lang::get('global.duplicate'),
+                    'view' => $lang ?? Lang::get('global.view'),
+                    'new' => $lang ?? Lang::get('global.new_resource'),
+                    'save', 'saveAnd' => $lang ?? Lang::get('global.save'),
+                    default => $lang ?? Lang::get('global.create_new')
+                };
+
+                break;
+            }
         }
 
         return $this;
@@ -195,16 +193,22 @@ class Actions extends Component
     {
         $this->setAction($action);
 
-        if (!is_null($to) && !isset($this->attributes['attrs']['data'][$action]['to'])) {
-            if (is_array($to)) {
-                $this->attributes['attrs']['data'][$action]['to'] = $to;
-            } else {
-                $this->attributes['attrs']['data'][$action]['to'] = [
-                    'path' => $to,
-                ];
+        if ($to) {
+            foreach ($this->attributes['attrs']['data'] as &$value) {
+                if (($value['action']['action'] ?? $value['action']) == $action) {
+                    if (is_array($to)) {
+                        $value['to'] = $to;
+                    } else {
+                        $value['to'] = [
+                            'path' => $to,
+                        ];
 
-                if ($action == 'new') {
-                    $this->attributes['attrs']['data'][$action]['to']['params']['id'] = 'new';
+                        if ($action == 'new') {
+                            $value['to']['params']['id'] = 'new';
+                        }
+                    }
+
+                    break;
                 }
             }
         }
@@ -222,8 +226,14 @@ class Actions extends Component
     {
         $this->setAction($action);
 
-        if (!is_null($class) && !isset($this->attributes['attrs']['data'][$action]['class'])) {
-            $this->attributes['attrs']['data'][$action]['class'] = $class;
+        if ($class) {
+            foreach ($this->attributes['attrs']['data'] as &$value) {
+                if (($value['action']['action'] ?? $value['action']) == $action) {
+                    $value['class'] = trim(($value['class'] ?? '') . ' ' . $class);
+
+                    break;
+                }
+            }
         }
 
         return $this;
@@ -239,18 +249,22 @@ class Actions extends Component
     {
         $this->setAction($action);
 
-        if (!isset($this->attributes['attrs']['data'][$action]['icon'])) {
-            $this->attributes['attrs']['data'][$action]['icon'] = match ($action) {
-                'cancel' => $icon ?? 'fa fa-reply',
-                'delete' => $icon ?? 'fa fa-trash-alt',
-                'clear' => $icon ?? 'fa fa-remove',
-                'restore' => $icon ?? 'fa fa-undo',
-                'copy' => $icon ?? 'fa fa-copy',
-                'view' => $icon ?? 'fa fa-eye',
-                'new' => $icon ?? 'fa fa-plus',
-                'save', 'saveAnd' => $icon ?? 'fa fa-save',
-                default => $icon ?? 'fa fa-circle'
-            };
+        foreach ($this->attributes['attrs']['data'] as &$value) {
+            if (($value['action']['action'] ?? $value['action']) == $action) {
+                $value['icon'] = match ($action) {
+                    'cancel' => $icon ?? 'fa fa-reply',
+                    'delete' => $icon ?? 'fa fa-trash-alt',
+                    'clear' => $icon ?? 'fa fa-remove',
+                    'restore' => $icon ?? 'fa fa-undo',
+                    'copy' => $icon ?? 'fa fa-copy',
+                    'view' => $icon ?? 'fa fa-eye',
+                    'new' => $icon ?? 'fa fa-plus',
+                    'save', 'saveAnd' => $icon ?? 'fa fa-save',
+                    default => $icon ?? 'fa fa-circle'
+                };
+
+                break;
+            }
         }
 
         return $this;
@@ -258,7 +272,7 @@ class Actions extends Component
 
     public function setSaveAnd($lang = null, $class = null, $icon = null): static
     {
-        $this->attributes['attrs']['data']['save'] = [
+        $this->attributes['attrs']['data'][] = [
             'action' => 'save',
             'icon' => $icon ?? 'fa fa-save',
             'title' => $lang ?? Lang::get('global.save'),

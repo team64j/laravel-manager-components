@@ -50,6 +50,18 @@ class CodeEditor extends Component
     }
 
     /**
+     * @param string|null $value
+     *
+     * @return $this
+     */
+    public function setInputClass(string $value = null): static
+    {
+        $this->attributes['attrs']['inputClass'] = $value;
+
+        return $this;
+    }
+
+    /**
      * @param int|string $value
      *
      * @return $this

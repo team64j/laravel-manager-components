@@ -299,12 +299,14 @@ class Field extends Component
 
     /**
      * @param string $value
+     * @param string|null $key
      *
      * @return $this
      */
-    public function setEmitInput(string $value): static
+    public function setEmitInput(string $value, string $key = null): static
     {
         $this->attributes['attrs']['emitInput'] = $value;
+        $this->attributes['attrs']['emitInputKey'] = $key;
 
         return $this;
     }

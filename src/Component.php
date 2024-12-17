@@ -66,6 +66,18 @@ abstract class Component extends Fluent
     }
 
     /**
+     * @param null $value
+     *
+     * @return $this
+     */
+    public function setKey($value = null): static
+    {
+        $this->attributes['attrs']['key'] = $value;
+
+        return $this;
+    }
+
+    /**
      * @return void
      */
     protected function clearAttributes(): void

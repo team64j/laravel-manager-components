@@ -144,9 +144,9 @@ class Tabs extends Component
     /**
      * @return $this
      */
-    public function isHideable(): static
+    public function isHiddenTabs(): static
     {
-        $this->attributes['attrs']['hideable'] = true;
+        $this->attributes['attrs']['hiddenTabs'] = true;
 
         return $this;
     }

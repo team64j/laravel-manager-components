@@ -34,7 +34,7 @@ class Tabs extends Component
      *
      * @return $this
      */
-    public function setId(string $value = null): static
+    public function setId(?string $value = null): static
     {
         $this->attributes['attrs']['id'] = $value;
 
@@ -46,7 +46,7 @@ class Tabs extends Component
      *
      * @return $this
      */
-    public function setUid(string $value = null): static
+    public function setUid(?string $value = null): static
     {
         $this->attributes['attrs']['uid'] = $value;
 
@@ -58,7 +58,7 @@ class Tabs extends Component
      *
      * @return $this
      */
-    public function setClass(string $value = null): static
+    public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;
 
@@ -70,7 +70,7 @@ class Tabs extends Component
      *
      * @return $this
      */
-    public function setData(array $value = null): static
+    public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = $value;
 
@@ -82,7 +82,7 @@ class Tabs extends Component
      *
      * @return $this
      */
-    public function setHistory(string|bool $value = null): static
+    public function setHistory(string|bool | null $value = null): static
     {
         $this->attributes['attrs']['history'] = $value;
 
@@ -94,7 +94,7 @@ class Tabs extends Component
      *
      * @return $this
      */
-    public function setNavigation(bool $value = null): static
+    public function setNavigation(?bool $value = null): static
     {
         $this->attributes['attrs']['navigation'] = $value ?? true;
 
@@ -166,13 +166,13 @@ class Tabs extends Component
      */
     public function addTab(
         string $id,
-        string $name = null,
-        string $icon = null,
-        string $class = null,
+        ?string $name = null,
+        ?string $icon = null,
+        ?string $class = null,
         bool|array|string $permissions = true,
-        string|array $route = null,
-        string $title = null,
-        array|Component $slot = null,
+        string|array | null $route = null,
+        ?string $title = null,
+        array|Component | null $slot = null,
         bool $needUpdate = false): static
     {
         if ($tab = Tab::make(...func_get_args())->toArray()) {

@@ -13,10 +13,10 @@ class Input extends Field
      * @param string|null $class
      */
     public function __construct(
-        string $model = null,
-        string $label = null,
-        string $help = null,
-        string $class = null
+        ?string $model = null,
+        ?string $label = null,
+        ?string $help = null,
+        ?string $class = null
     ) {
         parent::__construct([
             'component' => 'AppInput',

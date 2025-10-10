@@ -15,9 +15,9 @@ class Section extends Component
      * @param string|array|Component|null $slot
      */
     public function __construct(
-        string $icon = null,
-        string $label = null,
-        string $class = null,
+        ?string $icon = null,
+        ?string $label = null,
+        ?string $class = null,
         string|array|Component $slot = null
     ) {
         $attributes = [
@@ -86,7 +86,7 @@ class Section extends Component
      *
      * @return $this
      */
-    public function putSlot(string|array|Component $slot = null): static
+    public function putSlot(string|array|Component | null $slot = null): static
     {
         $this->attributes['slots']['default'][] = Arr::wrap($slot);
 
@@ -98,7 +98,7 @@ class Section extends Component
      *
      * @return $this
      */
-    public function setSlot(string|array|Component $slot = null): static
+    public function setSlot(string|array|Component | null $slot = null): static
     {
         $this->attributes['slots']['default'] = (array) $slot;
 

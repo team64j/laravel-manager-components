@@ -13,10 +13,10 @@ class CodeEditor extends Component
      * @param string|null $class
      */
     public function __construct(
-        string $model = null,
-        string $label = null,
-        string $help = null,
-        string $class = null
+        ?string $model = null,
+        ?string $label = null,
+        ?string $help = null,
+        ?string $class = null
     ) {
         $attributes = [
             'component' => 'AppCodeEditor',
@@ -42,7 +42,7 @@ class CodeEditor extends Component
      *
      * @return $this
      */
-    public function setClass(string $value = null): static
+    public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;
 
@@ -54,7 +54,7 @@ class CodeEditor extends Component
      *
      * @return $this
      */
-    public function setInputClass(string $value = null): static
+    public function setInputClass(?string $value = null): static
     {
         $this->attributes['attrs']['inputClass'] = $value;
 

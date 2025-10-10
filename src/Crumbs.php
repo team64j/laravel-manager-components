@@ -26,7 +26,7 @@ class Crumbs extends Component
      *
      * @return $this
      */
-    public function setData(array $value = null): static
+    public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = $value;
 

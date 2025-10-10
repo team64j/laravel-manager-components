@@ -11,8 +11,8 @@ class GlobalTab extends Component
      * @param string|null $title
      */
     public function __construct(
-        string $icon = null,
-        string $title = null,
+        ?string $icon = null,
+        ?string $title = null,
     ) {
         $attributes = [
             'component' => 'AppGlobalTab',

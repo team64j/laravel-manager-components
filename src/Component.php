@@ -4,16 +4,12 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManagerComponents;
 
-use Closure;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Fluent;
 
 abstract class Component extends Fluent
 {
-    /**
-     * @return static
-     */
-    public static function make(): static
+    public static function make($attributes = null): static
     {
         return new static(...func_get_args());
     }
@@ -90,33 +86,11 @@ abstract class Component extends Fluent
     }
 
     /**
-     * @param mixed $cond
-     * @param callable|null $callableIf
-     * @param callable|null $callableElse
-     *
-     * @return $this
-     */
-    public function when(mixed $cond, callable $callableIf = null, callable $callableElse = null): static
-    {
-        if ($cond) {
-            if ($callableIf instanceof Closure) {
-                $callableIf($this);
-            }
-        } else {
-            if ($callableElse instanceof Closure) {
-                $callableElse($this);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @param bool|array|string $permissions
      *
      * @return bool
      */
-    protected function hasPermissions(bool|array|string $permissions = true): bool
+    protected function hasPermissions(bool | array | string $permissions = true): bool
     {
         if (is_bool($permissions)) {
             return $permissions;

@@ -29,7 +29,7 @@ class TabsNavigation extends Component
      *
      * @return $this
      */
-    public function setId(string $value = null): static
+    public function setId(?string $value = null): static
     {
         $this->attributes['attrs']['id'] = $value;
 
@@ -41,7 +41,7 @@ class TabsNavigation extends Component
      *
      * @return $this
      */
-    public function setUid(string $value = null): static
+    public function setUid(?string $value = null): static
     {
         $this->attributes['attrs']['uid'] = $value;
 
@@ -53,7 +53,7 @@ class TabsNavigation extends Component
      *
      * @return $this
      */
-    public function setClass(string $value = null): static
+    public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;
 
@@ -65,7 +65,7 @@ class TabsNavigation extends Component
      *
      * @return $this
      */
-    public function setData(array $value = null): static
+    public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = $value;
 
@@ -77,7 +77,7 @@ class TabsNavigation extends Component
      *
      * @return $this
      */
-    public function setHistory(string|bool $value = null): static
+    public function setHistory(string|bool | null $value = null): static
     {
         $this->attributes['attrs']['history'] = $value;
 

@@ -18,14 +18,14 @@ class Tab extends Component
      * @param bool $needUpdate
      */
     public function __construct(
-        string $id = null,
-        string $name = null,
-        string $icon = null,
-        string $class = null,
+        ?string $id = null,
+        ?string $name = null,
+        ?string $icon = null,
+        ?string $class = null,
         bool|array|string $permissions = true,
-        string|array $route = null,
-        string $title = null,
-        array|Component $slot = null,
+        string|array | null $route = null,
+        ?string $title = null,
+        array|Component | null $slot = null,
         bool $needUpdate = false)
     {
         parent::__construct(get_defined_vars());
@@ -36,7 +36,7 @@ class Tab extends Component
      *
      * @return $this
      */
-    public function setId(string $value = null): static
+    public function setId(?string $value = null): static
     {
         $this->attributes['id'] = $value;
 
@@ -48,7 +48,7 @@ class Tab extends Component
      *
      * @return $this
      */
-    public function setName(string $value = null): static
+    public function setName(?string $value = null): static
     {
         $this->attributes['name'] = $value;
 
@@ -60,7 +60,7 @@ class Tab extends Component
      *
      * @return $this
      */
-    public function setTitle(string $value = null): static
+    public function setTitle(?string $value = null): static
     {
         $this->attributes['title'] = $value;
 
@@ -72,7 +72,7 @@ class Tab extends Component
      *
      * @return $this
      */
-    public function setIcon(string $value = null): static
+    public function setIcon(?string $value = null): static
     {
         $this->attributes['icon'] = $value;
 
@@ -84,7 +84,7 @@ class Tab extends Component
      *
      * @return $this
      */
-    public function setClass(string $value = null): static
+    public function setClass(?string $value = null): static
     {
         $this->attributes['class'] = $value;
 
@@ -96,7 +96,7 @@ class Tab extends Component
      *
      * @return $this
      */
-    public function setRoute(string|array $value = null): static
+    public function setRoute(string|array | null $value = null): static
     {
         $this->attributes['route'] = $value;
 

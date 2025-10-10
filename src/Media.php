@@ -13,10 +13,10 @@ class Media extends Component
      * @param string|null $class
      */
     public function __construct(
-        string $model = null,
-        string $label = null,
-        string $help = null,
-        string $class = null
+        ?string $model = null,
+        ?string $label = null,
+        ?string $help = null,
+        ?string $class = null
     ) {
         $attributes = [
             'component' => 'AppMedia',
@@ -36,7 +36,7 @@ class Media extends Component
      *
      * @return $this
      */
-    public function setData(array $value = null): static
+    public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = $value;
 
@@ -48,7 +48,7 @@ class Media extends Component
      *
      * @return $this
      */
-    public function setClass(string $value = null): static
+    public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;
 

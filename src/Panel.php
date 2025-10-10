@@ -70,7 +70,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function setId(string $value = null): static
+    public function setId(?string $value = null): static
     {
         $this->attributes['attrs']['id'] = $value;
 
@@ -82,7 +82,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function setModel(string $value = null): static
+    public function setModel(?string $value = null): static
     {
         $this->attributes['model'] = $value;
 
@@ -94,7 +94,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function setData(array $value = null): static
+    public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = array_key_exists('data', $value) ? $value['data'] : $value;
 
@@ -106,7 +106,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function setClass(string $value = null): static
+    public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;
 
@@ -118,7 +118,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function setRoute(string|array $value = null): static
+    public function setRoute(string|array | null $value = null): static
     {
         $this->attributes['attrs']['route'] = $value;
 
@@ -130,7 +130,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function setHistory(bool|string $value = null): static
+    public function setHistory(bool|string | null $value = null): static
     {
         $this->attributes['attrs']['history'] = $value;
 
@@ -142,7 +142,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function setUrl(string $value = null): static
+    public function setUrl(?string $value = null): static
     {
         $this->attributes['attrs']['url'] = $value;
 
@@ -166,16 +166,16 @@ class Panel extends Component
      */
     public function addColumn(
         string | array $name,
-        string $label = null,
+        ?string $label = null,
         array $style = [],
         bool $sort = false,
         array $values = [],
         array $actions = [],
         bool $html = false,
-        string $icon = null,
+        ?string $icon = null,
         bool $filter = false,
         bool $selectable = false,
-        array|Component $component = null
+        array|Component | null $component = null
     ): static {
         $data = get_defined_vars();
 
@@ -200,7 +200,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function addColumnIcon(string $icon, string $label = null, array $style = []): static
+    public function addColumnIcon(string $icon, ?string $label = null, array $style = []): static
     {
         $this->attributes['attrs']['columns'][] = get_defined_vars();
 
@@ -213,7 +213,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function addColumnHandle(string $label = null, array $style = []): static
+    public function addColumnHandle(?string $label = null, array $style = []): static
     {
         $data = get_defined_vars();
 
@@ -229,7 +229,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function setColumns(array $value = null): static
+    public function setColumns(?array $value = null): static
     {
         $this->attributes['attrs']['columns'] = array_is_list($value) ?
             array_map(fn($name) => is_array($name) ? $name : ['name' => $name], $value) : $value;
@@ -242,7 +242,7 @@ class Panel extends Component
      *
      * @return $this
      */
-    public function setSlotTop(string $value = null): static
+    public function setSlotTop(?string $value = null): static
     {
         $this->attributes['slots']['top'] = $value;
 
@@ -272,7 +272,7 @@ class Panel extends Component
     /**
      * @return $this
      */
-    public function isDraggable(string $value = null): static
+    public function isDraggable(?string $value = null): static
     {
         $this->attributes['attrs']['draggable'] = is_null($value) ? true : $value;
 

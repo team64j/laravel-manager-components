@@ -13,8 +13,8 @@ class Template extends Component
      * @param string|array|Component|null $slot
      */
     public function __construct(
-        string $class = null,
-        string|array|Component $slot = null
+        ?string $class = null,
+        string|array|Component | null $slot = null
     ) {
         $attributes = [
             'component' => 'AppTemplate',
@@ -46,7 +46,7 @@ class Template extends Component
      *
      * @return $this
      */
-    public function putSlot(string|array|Component $slot = null): static
+    public function putSlot(string|array|Component | null $slot = null): static
     {
         $this->attributes['slots']['default'][] = $slot;
 
@@ -58,7 +58,7 @@ class Template extends Component
      *
      * @return $this
      */
-    public function setSlot(string|array|Component $slot = null): static
+    public function setSlot(string|array|Component | null $slot = null): static
     {
         $this->attributes['slots']['default'] = $slot;
 

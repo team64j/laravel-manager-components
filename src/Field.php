@@ -13,7 +13,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setModel(string $value = null): static
+    public function setModel(?string $value = null): static
     {
         $this->attributes['model'] = $value;
 
@@ -25,7 +25,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setData(array $value = null): static
+    public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = $value;
 
@@ -39,10 +39,10 @@ class Field extends Component
      *
      * @return $this
      */
-    public function addOption($key, $value = null, bool $selected = null): static
+    public function addOption($key, $value = null, ?bool $selected = null): static
     {
         $option = [
-            'key' => $key,
+            'key'   => $key,
             'value' => $value,
         ];
 
@@ -60,11 +60,11 @@ class Field extends Component
     }
 
     public function addYesNo(
-        string $langYes = null,
-        string $langNo = null,
+        ?string $langYes = null,
+        ?string $langNo = null,
         string | int $valueYes = 1,
-        string | int $valueNo = 0): static
-    {
+        string | int $valueNo = 0
+    ): static {
         if (is_null($langYes)) {
             $langYes = Lang::get('global.yes');
         }
@@ -103,11 +103,11 @@ class Field extends Component
     }
 
     /**
-     * @param null $value
+     * @param string|int|null $value
      *
      * @return $this
      */
-    public function setType($value = null): static
+    public function setType(string | int | null $value = null): static
     {
         $this->attributes['attrs']['type'] = $value;
 
@@ -115,11 +115,11 @@ class Field extends Component
     }
 
     /**
-     * @param string|null $value
+     * @param string|int|null $value
      *
      * @return $this
      */
-    public function setId(string $value = null): static
+    public function setId(string | int | null $value = null): static
     {
         $this->attributes['attrs']['id'] = $value;
 
@@ -131,7 +131,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setClass(string $value = null): static
+    public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;
 
@@ -143,7 +143,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setLabel(string $value = null): static
+    public function setLabel(?string $value = null): static
     {
         $this->attributes['attrs']['label'] = $value;
 
@@ -155,7 +155,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setDescription(string $value = null): static
+    public function setDescription(?string $value = null): static
     {
         $this->attributes['attrs']['description'] = $value;
 
@@ -167,7 +167,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setHelp(string $value = null): static
+    public function setHelp(?string $value = null): static
     {
         $this->attributes['attrs']['help'] = $value;
 
@@ -179,7 +179,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setInputClass(string $value = null): static
+    public function setInputClass(?string $value = null): static
     {
         $this->attributes['attrs']['inputClass'] = $value;
 
@@ -191,7 +191,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setErrorClass(string $value = null): static
+    public function setErrorClass(?string $value = null): static
     {
         $this->attributes['attrs']['errorClass'] = $value;
 
@@ -203,7 +203,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setRequired(string $value = null): static
+    public function setRequired(?string $value = null): static
     {
         $this->attributes['attrs']['requiredText'] = $value;
 
@@ -229,7 +229,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setUrl(string $value = null): static
+    public function setUrl(?string $value = null): static
     {
         $this->attributes['attrs']['url'] = $value;
 
@@ -276,10 +276,10 @@ class Field extends Component
     public function setRelation(string $value, $trueValue = null, $falseValue = null, $notEmpty = null): static
     {
         $this->attributes['attrs']['relation'] = [
-            'key' => $value,
-            'trueValue' => $trueValue,
+            'key'        => $value,
+            'trueValue'  => $trueValue,
             'falseValue' => $falseValue,
-            'notEmpty' => $notEmpty,
+            'notEmpty'   => $notEmpty,
         ];
 
         return $this;
@@ -303,7 +303,7 @@ class Field extends Component
      *
      * @return $this
      */
-    public function setEmitInput(string $value, string $key = null): static
+    public function setEmitInput(string $value, ?string $key = null): static
     {
         $this->attributes['attrs']['emitInput'] = $value;
         $this->attributes['attrs']['emitInputKey'] = $key;

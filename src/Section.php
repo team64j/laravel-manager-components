@@ -18,7 +18,7 @@ class Section extends Component
         ?string $icon = null,
         ?string $label = null,
         ?string $class = null,
-        string|array|Component $slot = null
+        string|array|Component | null $slot = null
     ) {
         $attributes = [
             'component' => 'AppSection',

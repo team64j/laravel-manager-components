@@ -10,13 +10,6 @@ class Media extends Component
         'component' => 'AppMedia',
     ];
 
-    public function setModel(string $value): static
-    {
-        $this->attributes['model'] = $value;
-
-        return $this;
-    }
-
     public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = $value;

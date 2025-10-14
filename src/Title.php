@@ -31,13 +31,6 @@ class Title extends Component
         return $this;
     }
 
-    public function setModel(?string $value = null): static
-    {
-        $this->attributes['model'] = $value;
-
-        return $this;
-    }
-
     public function setData(?string $value = null): static
     {
         $this->attributes['data'] = $value;

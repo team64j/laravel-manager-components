@@ -7,10 +7,6 @@ namespace Team64j\LaravelManagerComponents;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Fluent;
 
-/**
- * @template TKey of array-key
- * @template TValue
- */
 abstract class Component extends Fluent
 {
     protected $attributes = [
@@ -36,63 +32,6 @@ abstract class Component extends Fluent
     public static function __callStatic($method, $parameters): static
     {
         return (new static)->$method(...$parameters);
-    }
-
-    public function __call($method, $parameters)
-    {
-        if (static::hasMacro($method)) {
-            return $this->macroCall($method, $parameters);
-        }
-
-        $this->attributes['attrs'][$method] = count($parameters) > 0 ? array_first($parameters) : true;
-
-        return $this;
-    }
-
-    /**
-     * Dynamically retrieve the value of an attribute.
-     *
-     * @param  TKey  $key
-     * @return TValue|null
-     */
-    public function __get($key)
-    {
-        return $this->value($key);
-    }
-
-    /**
-     * Dynamically set the value of an attribute.
-     *
-     * @param  TKey  $key
-     * @param  TValue  $value
-     * @return void
-     */
-    public function __set($key, $value)
-    {
-        $this->offsetSet($key, $value);
-    }
-
-    /**
-     * Set the value at the given offset.
-     *
-     * @param  TKey  $offset
-     * @param  TValue  $value
-     * @return void
-     */
-    public function offsetSet($offset, $value): void
-    {
-        $this->attributes['attrs'][$offset] = $value;
-    }
-
-    /**
-     * Unset the value at the given offset.
-     *
-     * @param  TKey  $offset
-     * @return void
-     */
-    public function offsetUnset($offset): void
-    {
-        unset($this->attributes['attrs'][$offset]);
     }
 
     public function toArray(): array
@@ -146,5 +85,12 @@ abstract class Component extends Fluent
         }
 
         return Gate::check($permissions);
+    }
+
+    public function setModel(?string $value): static
+    {
+        $this->attributes['model'] = $value;
+
+        return $this;
     }
 }

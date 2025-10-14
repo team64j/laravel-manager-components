@@ -43,13 +43,6 @@ class Panel extends Component
         return $this;
     }
 
-    public function setModel(?string $value = null): static
-    {
-        $this->attributes['model'] = $value;
-
-        return $this;
-    }
-
     public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = array_key_exists('data', $value) ? $value['data'] : $value;

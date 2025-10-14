@@ -8,13 +8,6 @@ use Illuminate\Support\Facades\Lang;
 
 class Field extends Component
 {
-    public function setModel(?string $value = null): static
-    {
-        $this->attributes['model'] = $value;
-
-        return $this;
-    }
-
     public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = $value;

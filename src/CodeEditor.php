@@ -18,13 +18,6 @@ class CodeEditor extends Component
         ],
     ];
 
-    public function setModel(?string $value = null): static
-    {
-        $this->attributes['model'] = $value;
-
-        return $this;
-    }
-
     public function setLabel(?string $value = null): static
     {
         $this->attributes['attrs']['label'] = $value;

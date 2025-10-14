@@ -6,23 +6,10 @@ namespace Team64j\LaravelManagerComponents;
 
 class Tree extends Component
 {
-    /**
-     * @param array $data
-     */
-    public function __construct(array $data = []) {
-        $attributes = [
-            'component' => 'AppTree',
-            'attrs' => [...$data],
-        ];
+    protected $attributes = [
+        'component' => 'AppTree',
+    ];
 
-        parent::__construct($attributes);
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function setId(string $value): static
     {
         $this->attributes['attrs']['id'] = $value;
@@ -30,11 +17,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function setClass(string $value): static
     {
         $this->attributes['attrs']['class'] = $value;
@@ -42,11 +24,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function setUrl(string $value): static
     {
         $this->attributes['attrs']['url'] = $value;
@@ -54,23 +31,13 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param string|array $value
-     *
-     * @return $this
-     */
-    public function setRoute(string|array $value): static
+    public function setRoute(string | array $value): static
     {
         $this->attributes['attrs']['route'] = $value;
 
         return $this;
     }
 
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function setRouteList(string $value): static
     {
         $this->attributes['attrs']['routeList'] = $value;
@@ -78,11 +45,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setAliases(array $value): static
     {
         $this->attributes['attrs']['aliases'] = $value;
@@ -90,11 +52,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setIcons(array $value): static
     {
         $this->attributes['attrs']['icons'] = $value;
@@ -102,11 +59,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setTemplates(array $value): static
     {
         $this->attributes['attrs']['templates'] = $value;
@@ -114,11 +66,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setAppends(array $value): static
     {
         $this->attributes['attrs']['appends'] = $value;
@@ -126,11 +73,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setContextMenu(array $value): static
     {
         $this->attributes['attrs']['contextMenu'] = $value;
@@ -138,11 +80,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setMenu(array $value): static
     {
         $this->attributes['attrs']['menu'] = $value;
@@ -150,11 +87,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setSettings(array $value): static
     {
         $this->attributes['attrs']['settings'] = $value;
@@ -162,9 +94,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function isCategory(): static
     {
         $this->attributes['attrs']['category'] = true;
@@ -172,9 +101,6 @@ class Tree extends Component
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function isSearchable(): static
     {
         $this->attributes['attrs']['search'] = true;

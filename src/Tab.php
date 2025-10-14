@@ -6,36 +6,10 @@ namespace Team64j\LaravelManagerComponents;
 
 class Tab extends Component
 {
-    /**
-     * @param string|null $id
-     * @param string|null $name
-     * @param string|null $icon
-     * @param string|null $class
-     * @param bool|array|string $permissions
-     * @param string|array|null $route
-     * @param string|null $title
-     * @param array|Component|null $slot
-     * @param bool $needUpdate
-     */
-    public function __construct(
-        ?string $id = null,
-        ?string $name = null,
-        ?string $icon = null,
-        ?string $class = null,
-        bool|array|string $permissions = true,
-        string|array | null $route = null,
-        ?string $title = null,
-        array|Component | null $slot = null,
-        bool $needUpdate = false)
-    {
-        parent::__construct(get_defined_vars());
-    }
+    protected $attributes = [
+        'component' => 'AppTab',
+    ];
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setId(?string $value = null): static
     {
         $this->attributes['id'] = $value;
@@ -43,11 +17,6 @@ class Tab extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setName(?string $value = null): static
     {
         $this->attributes['name'] = $value;
@@ -55,11 +24,6 @@ class Tab extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setTitle(?string $value = null): static
     {
         $this->attributes['title'] = $value;
@@ -67,11 +31,6 @@ class Tab extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setIcon(?string $value = null): static
     {
         $this->attributes['icon'] = $value;
@@ -79,11 +38,6 @@ class Tab extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setClass(?string $value = null): static
     {
         $this->attributes['class'] = $value;
@@ -91,60 +45,37 @@ class Tab extends Component
         return $this;
     }
 
-    /**
-     * @param string|array|null $value
-     *
-     * @return $this
-     */
-    public function setRoute(string|array | null $value = null): static
+    public function setRoute(string | array | null $value = null): static
     {
         $this->attributes['route'] = $value;
 
         return $this;
     }
 
-    /**
-     * @param array|Component $value
-     *
-     * @return $this
-     */
-    public function setSlot(array|Component $value): static
+    public function setSlot(array | Component | null $value): static
     {
         $this->attributes['slot'] = $value;
 
         return $this;
     }
 
-    /**
-     * @param array|Component $value
-     *
-     * @return $this
-     */
-    public function addSlot(array|Component $value): static
+    public function addSlot(array | Component $value): static
     {
         $this->attributes['slot'] = $value;
 
         return $this;
     }
 
-    /**
-     * @param bool|array|string $value
-     *
-     * @return $this
-     */
-    public function setPermissions(bool|array|string $value): static
+    public function setPermissions(bool | array | string $value): static
     {
         $this->attributes['permissions'] = $value;
 
         return $this;
     }
 
-    /**
-     * @return $this
-     */
-    public function isNeedUpdate(): static
+    public function isNeedUpdate(bool $value = true): static
     {
-        $this->attributes['needUpdate'] = true;
+        $this->attributes['needUpdate'] = $value;
 
         return $this;
     }

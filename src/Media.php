@@ -6,36 +6,17 @@ namespace Team64j\LaravelManagerComponents;
 
 class Media extends Component
 {
-    /**
-     * @param string|null $model
-     * @param string|null $label
-     * @param string|null $help
-     * @param string|null $class
-     */
-    public function __construct(
-        ?string $model = null,
-        ?string $label = null,
-        ?string $help = null,
-        ?string $class = null
-    ) {
-        $attributes = [
-            'component' => 'AppMedia',
-            'attrs' => [
-                'label' => $label,
-                'help' => $help,
-                'class' => $class,
-            ],
-            'model' => $model,
-        ];
+    protected $attributes = [
+        'component' => 'AppMedia',
+    ];
 
-        parent::__construct($attributes);
+    public function setModel(string $value): static
+    {
+        $this->attributes['model'] = $value;
+
+        return $this;
     }
 
-    /**
-     * @param array|null $value
-     *
-     * @return $this
-     */
     public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = $value;
@@ -43,11 +24,6 @@ class Media extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;

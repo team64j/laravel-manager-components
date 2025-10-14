@@ -6,29 +6,10 @@ namespace Team64j\LaravelManagerComponents;
 
 class TabsNavigation extends Component
 {
-    /**
-     * @param array $data
-     */
-    public function __construct(array $data = [])
-    {
-        $attributes = [
-            'component' => 'AppTabsNavigation',
-            'attrs' => [
-                'id' => $data['id'] ?? null,
-                'history' => $data['history'] ?? null,
-                'data' => $data['data'] ?? [],
-            ],
-            'data' => $data['model'] ?? null,
-        ];
+    protected $attributes = [
+        'component' => 'AppNavigation',
+    ];
 
-        parent::__construct($attributes);
-    }
-
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setId(?string $value = null): static
     {
         $this->attributes['attrs']['id'] = $value;
@@ -36,11 +17,6 @@ class TabsNavigation extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setUid(?string $value = null): static
     {
         $this->attributes['attrs']['uid'] = $value;
@@ -48,11 +24,6 @@ class TabsNavigation extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;
@@ -60,11 +31,6 @@ class TabsNavigation extends Component
         return $this;
     }
 
-    /**
-     * @param array|null $value
-     *
-     * @return $this
-     */
     public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = $value;
@@ -72,21 +38,13 @@ class TabsNavigation extends Component
         return $this;
     }
 
-    /**
-     * @param string|bool|null $value
-     *
-     * @return $this
-     */
-    public function setHistory(string|bool | null $value = null): static
+    public function setHistory(string | bool | null $value = null): static
     {
         $this->attributes['attrs']['history'] = $value;
 
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function isVertical(): static
     {
         $this->attributes['attrs']['vertical'] = true;
@@ -94,9 +52,6 @@ class TabsNavigation extends Component
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function isSmallTabs(): static
     {
         $this->attributes['attrs']['smallTabs'] = true;

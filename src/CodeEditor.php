@@ -6,42 +6,39 @@ namespace Team64j\LaravelManagerComponents;
 
 class CodeEditor extends Component
 {
-    /**
-     * @param string|null $model
-     * @param string|null $label
-     * @param string|null $help
-     * @param string|null $class
-     */
-    public function __construct(
-        ?string $model = null,
-        ?string $label = null,
-        ?string $help = null,
-        ?string $class = null
-    ) {
-        $attributes = [
-            'component' => 'AppCodeEditor',
-            'attrs' => [
-                'label' => $label,
-                'help' => $help,
-                'class' => $class,
-                'config' => [
-                    [
-                        'component' => 'Codemirror',
-                        'name' => 'Codemirror',
-                    ],
+    protected $attributes = [
+        'component' => 'AppCodeEditor',
+        'attrs' => [
+            'config' => [
+                [
+                    'component' => 'Codemirror',
+                    'name'      => 'Codemirror',
                 ],
             ],
-            'model' => $model,
-        ];
+        ],
+    ];
 
-        parent::__construct($attributes);
+    public function setModel(?string $value = null): static
+    {
+        $this->attributes['model'] = $value;
+
+        return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
+    public function setLabel(?string $value = null): static
+    {
+        $this->attributes['attrs']['label'] = $value;
+
+        return $this;
+    }
+
+    public function setHelp(?string $value = null): static
+    {
+        $this->attributes['attrs']['help'] = $value;
+
+        return $this;
+    }
+
     public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;
@@ -49,11 +46,6 @@ class CodeEditor extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setInputClass(?string $value = null): static
     {
         $this->attributes['attrs']['inputClass'] = $value;
@@ -61,23 +53,13 @@ class CodeEditor extends Component
         return $this;
     }
 
-    /**
-     * @param int|string $value
-     *
-     * @return $this
-     */
-    public function setRows(int|string $value): static
+    public function setRows(int | string $value): static
     {
         $this->attributes['attrs']['rows'] = $value;
 
         return $this;
     }
 
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function setLanguage(string $value): static
     {
         foreach ($this->attributes['attrs']['config'] as &$attr) {
@@ -89,11 +71,6 @@ class CodeEditor extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setConfig(array $value): static
     {
         $this->attributes['attrs']['config'] = $value;
@@ -101,9 +78,6 @@ class CodeEditor extends Component
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function isFullSize(): static
     {
         $this->attributes['attrs']['fullSize'] = true;

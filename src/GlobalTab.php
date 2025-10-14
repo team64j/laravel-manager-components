@@ -6,22 +6,21 @@ namespace Team64j\LaravelManagerComponents;
 
 class GlobalTab extends Component
 {
-    /**
-     * @param string|null $icon
-     * @param string|null $title
-     */
-    public function __construct(
-        ?string $icon = null,
-        ?string $title = null,
-    ) {
-        $attributes = [
-            'component' => 'AppGlobalTab',
-            'attrs' => [
-                'icon' => $icon,
-                'title' => $title,
-            ],
-        ];
+    protected $attributes = [
+        'component' => 'AppGlobalTab',
+    ];
 
-        parent::__construct($attributes);
+    public function setIcon(string $value): static
+    {
+        $this->attributes['attrs']['icon'] = $value;
+
+        return $this;
+    }
+
+    public function setTitle(string $value): static
+    {
+        $this->attributes['attrs']['title'] = $value;
+
+        return $this;
     }
 }

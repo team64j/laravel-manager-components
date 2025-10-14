@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManagerComponents;
 
-class Number extends Input
+class Number extends Field
 {
-    public function __construct()
-    {
-        parent::__construct(...func_get_args());
-
-        $this->attributes['attrs']['type'] = 'number';
-    }
+    protected $attributes = [
+        'component' => 'AppInput',
+        'attrs' => [
+            'type' => 'number',
+        ],
+    ];
 }

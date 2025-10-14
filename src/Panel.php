@@ -6,31 +6,10 @@ namespace Team64j\LaravelManagerComponents;
 
 class Panel extends Component
 {
-    /**
-     * @param array $data
-     */
-    public function __construct(array $data = [])
-    {
-        $attributes = [
-            'component' => 'AppPanel',
-            'attrs' => [
-                'id' => $data['id'] ?? null,
-                'history' => $data['history'] ?? null,
-                'data' => $data['data'] ?? null,
-                'columns' => $data['columns'] ?? null,
-                'route' => $data['route'] ?? null,
-            ],
-            'data' => $data['model'] ?? null,
-        ];
+    protected $attributes = [
+        'component' => 'AppPanel',
+    ];
 
-        parent::__construct($attributes);
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function setView(string $value): static
     {
         $this->attributes['attrs']['view'] = $value;
@@ -38,11 +17,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setViews(array $value): static
     {
         $this->attributes['attrs']['views'] = $value;
@@ -50,9 +24,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @return void
-     */
     protected function clearAttributes(): void
     {
         if (!empty($this->attributes['attrs']['columns'])) {
@@ -65,11 +36,6 @@ class Panel extends Component
         parent::clearAttributes();
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setId(?string $value = null): static
     {
         $this->attributes['attrs']['id'] = $value;
@@ -77,11 +43,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setModel(?string $value = null): static
     {
         $this->attributes['model'] = $value;
@@ -89,11 +50,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param array|null $value
-     *
-     * @return $this
-     */
     public function setData(?array $value = null): static
     {
         $this->attributes['attrs']['data'] = array_key_exists('data', $value) ? $value['data'] : $value;
@@ -101,11 +57,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setClass(?string $value = null): static
     {
         $this->attributes['attrs']['class'] = $value;
@@ -113,35 +64,20 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param string|array|null $value
-     *
-     * @return $this
-     */
-    public function setRoute(string|array | null $value = null): static
+    public function setRoute(string | array | null $value = null): static
     {
         $this->attributes['attrs']['route'] = $value;
 
         return $this;
     }
 
-    /**
-     * @param bool|string|null $value
-     *
-     * @return $this
-     */
-    public function setHistory(bool|string | null $value = null): static
+    public function setHistory(bool | string | null $value = null): static
     {
         $this->attributes['attrs']['history'] = $value;
 
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setUrl(?string $value = null): static
     {
         $this->attributes['attrs']['url'] = $value;
@@ -149,21 +85,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param string|array $name
-     * @param string|null $label
-     * @param array $style
-     * @param bool $sort
-     * @param array $values
-     * @param array $actions
-     * @param array|false $html
-     * @param string|null $icon
-     * @param bool $filter
-     * @param bool $selectable
-     * @param array|Component|null $component
-     *
-     * @return $this
-     */
     public function addColumn(
         string | array $name,
         ?string $label = null,
@@ -175,7 +96,7 @@ class Panel extends Component
         ?string $icon = null,
         bool $filter = false,
         bool $selectable = false,
-        array|Component | null $component = null
+        array | Component | null $component = null
     ): static {
         $data = get_defined_vars();
 
@@ -193,13 +114,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param string $icon
-     * @param string|null $label
-     * @param array $style
-     *
-     * @return $this
-     */
     public function addColumnIcon(string $icon, ?string $label = null, array $style = []): static
     {
         $this->attributes['attrs']['columns'][] = get_defined_vars();
@@ -207,12 +121,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $label
-     * @param array $style
-     *
-     * @return $this
-     */
     public function addColumnHandle(?string $label = null, array $style = []): static
     {
         $data = get_defined_vars();
@@ -224,11 +132,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param array|null $value
-     *
-     * @return $this
-     */
     public function setColumns(?array $value = null): static
     {
         $this->attributes['attrs']['columns'] = array_is_list($value) ?
@@ -237,11 +140,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setSlotTop(?string $value = null): static
     {
         $this->attributes['slots']['top'] = $value;
@@ -249,9 +147,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function isFilter(): static
     {
         $this->attributes['attrs']['filter'] = true;
@@ -259,9 +154,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function isRerender(): static
     {
         $this->attributes['attrs']['rerender'] = true;
@@ -269,9 +161,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function isDraggable(?string $value = null): static
     {
         $this->attributes['attrs']['draggable'] = is_null($value) ? true : $value;
@@ -279,11 +168,6 @@ class Panel extends Component
         return $this;
     }
 
-    /**
-     * @param array $value
-     *
-     * @return $this
-     */
     public function setContextMenu(array $value): static
     {
         $this->attributes['attrs']['contextMenu'] = $value;

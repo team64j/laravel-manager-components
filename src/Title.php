@@ -6,31 +6,10 @@ namespace Team64j\LaravelManagerComponents;
 
 class Title extends Component
 {
-    /**
-     * @param array $data
-     */
-    public function __construct(array $data = [])
-    {
-        $attributes = [
-            'component' => 'AppTitle',
-            'attrs' => [
-                'title' => $data['title'] ?? null,
-                'icon' => $data['icon'] ?? null,
-                'id' => $data['id'] ?? null,
-                'help' => $data['help'] ?? null,
-            ],
-            'model' => $data['model'] ?? null,
-            'data' => $data['data'] ?? null,
-        ];
+    protected $attributes = [
+        'component' => 'AppTitle',
+    ];
 
-        parent::__construct($attributes);
-    }
-
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setTitle(?string $value = null): static
     {
         $this->attributes['attrs']['title'] = $value;
@@ -38,11 +17,6 @@ class Title extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setIcon(?string $value = null): static
     {
         $this->attributes['attrs']['icon'] = $value;
@@ -50,11 +24,6 @@ class Title extends Component
         return $this;
     }
 
-    /**
-     * @param string|int|null $value
-     *
-     * @return $this
-     */
     public function setId(string | int | null $value = null): static
     {
         $this->attributes['attrs']['id'] = $value;
@@ -62,11 +31,6 @@ class Title extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setModel(?string $value = null): static
     {
         $this->attributes['model'] = $value;
@@ -74,11 +38,6 @@ class Title extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setData(?string $value = null): static
     {
         $this->attributes['data'] = $value;
@@ -86,11 +45,6 @@ class Title extends Component
         return $this;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return $this
-     */
     public function setHelp(?string $value = null): static
     {
         $this->attributes['attrs']['help'] = $value;

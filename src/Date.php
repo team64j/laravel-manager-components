@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManagerComponents;
 
-class Date extends Input
+class Date extends Field
 {
-    public function __construct()
-    {
-        parent::__construct(...func_get_args());
-
-        $this->attributes['attrs']['type'] = 'date';
-    }
+    protected $attributes = [
+        'component' => 'AppInput',
+        'attrs' => [
+            'type' => 'date',
+        ],
+    ];
 }

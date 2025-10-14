@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManagerComponents;
 
-class Button extends Input
+class Button extends Field
 {
-    public function __construct()
-    {
-        parent::__construct(...func_get_args());
-
-        $this->attributes['attrs']['type'] = 'button';
-    }
+    protected $attributes = [
+        'component' => 'AppInput',
+        'attrs' => [
+            'type' => 'button',
+        ],
+    ];
 }

@@ -51,30 +51,10 @@ use Illuminate\Support\Str;
  */
 class Actions extends Component
 {
-    /**
-     * @param array $data
-     */
-    public function __construct(array $data = [])
-    {
-        $attributes = [
-            'component' => 'AppActions',
-        ];
+    protected $attributes = [
+        'component' => 'AppActions',
+    ];
 
-        foreach ($data as $item) {
-            if (is_string($item)) {
-                $this->setAction($item);
-            }
-        }
-
-        parent::__construct($attributes);
-    }
-
-    /**
-     * @param $method
-     * @param $parameters
-     *
-     * @return $this
-     */
     public function __call($method, $parameters): static
     {
         $str = Str::of($method);
@@ -117,15 +97,6 @@ class Actions extends Component
         return $this;
     }
 
-    /**
-     * @param $action
-     * @param null $lang
-     * @param null $to
-     * @param null $class
-     * @param null $icon
-     *
-     * @return $this
-     */
     public function setAction($action, $lang = null, $to = null, $class = null, $icon = null): static
     {
         $params = $action;
@@ -152,12 +123,6 @@ class Actions extends Component
             ->setActionIcon($action, $icon);
     }
 
-    /**
-     * @param $action
-     * @param $lang
-     *
-     * @return $this
-     */
     public function setActionTitle($action, $lang = null): static
     {
         $this->setAction($action);
@@ -183,12 +148,6 @@ class Actions extends Component
         return $this;
     }
 
-    /**
-     * @param $action
-     * @param null $to
-     *
-     * @return $this
-     */
     public function setActionTo($action, $to = null): static
     {
         $this->setAction($action);
@@ -216,12 +175,6 @@ class Actions extends Component
         return $this;
     }
 
-    /**
-     * @param $action
-     * @param null $class
-     *
-     * @return $this
-     */
     public function setActionClass($action, $class = null): static
     {
         $this->setAction($action);
@@ -239,12 +192,6 @@ class Actions extends Component
         return $this;
     }
 
-    /**
-     * @param $action
-     * @param null $icon
-     *
-     * @return $this
-     */
     public function setActionIcon($action, $icon = null): static
     {
         $this->setAction($action);

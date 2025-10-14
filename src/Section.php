@@ -8,38 +8,13 @@ use Illuminate\Support\Arr;
 
 class Section extends Component
 {
-    /**
-     * @param string|null $icon
-     * @param string|null $label
-     * @param string|null $class
-     * @param string|array|Component|null $slot
-     */
-    public function __construct(
-        ?string $icon = null,
-        ?string $label = null,
-        ?string $class = null,
-        string|array|Component | null $slot = null
-    ) {
-        $attributes = [
-            'component' => 'AppSection',
-            'attrs' => [
-                'icon' => $icon,
-                'label' => $label,
-                'class' => $class,
-            ],
-            'slots' => [
-                'default' => Arr::wrap($slot),
-            ],
-        ];
+    protected $attributes = [
+        'component' => 'AppSection',
+        'slots' => [
+            'default' => [],
+        ],
+    ];
 
-        parent::__construct($attributes);
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function setIcon(string $value): static
     {
         $this->attributes['attrs']['icon'] = $value;
@@ -47,11 +22,6 @@ class Section extends Component
         return $this;
     }
 
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function setLabel(string $value): static
     {
         $this->attributes['attrs']['label'] = $value;
@@ -59,11 +29,6 @@ class Section extends Component
         return $this;
     }
 
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function setClass(string $value): static
     {
         $this->attributes['attrs']['class'] = $value;
@@ -71,9 +36,6 @@ class Section extends Component
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function isExpanded(): static
     {
         $this->attributes['attrs']['expanded'] = true;
@@ -81,11 +43,6 @@ class Section extends Component
         return $this;
     }
 
-    /**
-     * @param string|array|Component|null $slot
-     *
-     * @return $this
-     */
     public function putSlot(string|array|Component | null $slot = null): static
     {
         $this->attributes['slots']['default'][] = Arr::wrap($slot);
@@ -93,14 +50,9 @@ class Section extends Component
         return $this;
     }
 
-    /**
-     * @param string|array|Component|null $slot
-     *
-     * @return $this
-     */
     public function setSlot(string|array|Component | null $slot = null): static
     {
-        $this->attributes['slots']['default'] = (array) $slot;
+        $this->attributes['slots']['default'] = Arr::wrap($slot);
 
         return $this;
     }

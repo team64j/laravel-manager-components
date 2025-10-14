@@ -117,7 +117,8 @@ class Actions extends Component
             'action' => $params,
         ];
 
-        return $this->setActionTo($action, $to)
+        return $this
+            ->setActionTo($action, $to)
             ->setActionTitle($action, $lang)
             ->setActionClass($action, $class)
             ->setActionIcon($action, $icon);
@@ -217,30 +218,37 @@ class Actions extends Component
         return $this;
     }
 
-    public function setSaveAnd($lang = null, $class = null, $icon = null): static
+    public function setSaveAnd($lang = null, $class = null, $icon = null, array $states = [0, 1, 2]): static
     {
+        $data = [
+            [
+                'stay'  => 0,
+                'icon'  => 'fa fa-reply fa-fw',
+                'title' => Lang::get('global.close'),
+            ],
+            [
+                'stay'  => 1,
+                'icon'  => 'fa fa-copy fa-fw',
+                'title' => Lang::get('global.stay_new'),
+            ],
+            [
+                'stay'  => 2,
+                'icon'  => 'fa fa-pencil fa-fw',
+                'title' => Lang::get('global.stay'),
+            ],
+        ];
+
         $this->attributes['attrs']['data'][] = [
             'action' => 'save',
-            'icon' => $icon ?? 'fa fa-save',
-            'title' => $lang ?? Lang::get('global.save'),
-            'class' => $class ?? 'btn-green',
-            'data' => [
-                [
-                    'stay' => 0,
-                    'icon' => 'fa fa-reply fa-fw',
-                    'title' => Lang::get('global.close'),
-                ],
-                [
-                    'stay' => 1,
-                    'icon' => 'fa fa-copy fa-fw',
-                    'title' => Lang::get('global.stay_new'),
-                ],
-                [
-                    'stay' => 2,
-                    'icon' => 'fa fa-pencil fa-fw',
-                    'title' => Lang::get('global.stay'),
-                ],
-            ],
+            'icon'   => $icon ?? 'fa fa-save',
+            'title'  => $lang ?? Lang::get('global.save'),
+            'class'  => $class ?? 'btn-green',
+            'data'   => array_values(
+                array_filter(
+                    $data,
+                    fn($item) => in_array($item['stay'], $states, true)
+                )
+            ),
         ];
 
         return $this;

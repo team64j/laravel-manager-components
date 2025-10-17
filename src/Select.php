@@ -10,9 +10,16 @@ class Select extends Field
         'component' => 'AppSelect',
     ];
 
-    public function setMultiple(): static
+    public function isMultiple(bool $value = true): static
     {
-        $this->attributes['attrs']['multiple'] = true;
+        $this->attributes['attrs']['multiple'] = $value;
+
+        return $this;
+    }
+
+    public function isLoaded(bool $value = true): static
+    {
+        $this->attributes['attrs']['load'] = $value;
 
         return $this;
     }

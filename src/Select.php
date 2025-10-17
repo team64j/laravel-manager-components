@@ -17,7 +17,7 @@ class Select extends Field
         return $this;
     }
 
-    public function isLoaded(bool $value = true): static
+    public function isLoad(bool $value = true): static
     {
         $this->attributes['attrs']['load'] = $value;
 

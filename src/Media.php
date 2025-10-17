@@ -23,4 +23,18 @@ class Media extends Component
 
         return $this;
     }
+
+    public function setLabel(?string $value = null): static
+    {
+        $this->attributes['attrs']['label'] = $value;
+
+        return $this;
+    }
+
+    public function setHelp(?string $value = null): static
+    {
+        $this->attributes['attrs']['help'] = $value;
+
+        return $this;
+    }
 }

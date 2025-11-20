@@ -3,6 +3,7 @@
 namespace Team64j\LaravelManagerComponents;
 
 use Illuminate\Support\Arr;
+use Ramsey\Uuid\Uuid;
 
 class Grid extends Component
 {
@@ -17,15 +18,10 @@ class Grid extends Component
         return $this;
     }
 
-    public function addArea(string | array | Component | null $slot, string | array $gridArea): static
+    public function addArea(string | array | Component | null $slot, string | array | null $gridArea = null): static
     {
         $this->attributes['attrs']['gridAreas'][] = $gridArea;
         $this->attributes['slots']['grid_' . count($this->attributes['attrs']['gridAreas']) - 1] = Arr::wrap($slot);
-
-        //        $this->attributes['attrs']['data'][] = [
-        //            'slot' => $slot,
-        //            'gridArea' => $gridArea,
-        //        ];
 
         return $this;
     }

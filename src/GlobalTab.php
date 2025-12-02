@@ -23,4 +23,11 @@ class GlobalTab extends Component
 
         return $this;
     }
+
+    public function isFixed(bool $value = true): static
+    {
+        $this->attributes['attrs']['fixed'] = $value;
+
+        return $this;
+    }
 }
